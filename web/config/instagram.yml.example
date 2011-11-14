@@ -1,0 +1,6 @@
+development: &dev
+    app_id: "4a60b21e9133411ebd59906573ae6fa5"
+    app_secret: "147e6d111ba64098866c36a80136b08d"
+
+test:
+  <<: *dev

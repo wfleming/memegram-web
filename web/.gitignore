@@ -1,7 +1,6 @@
 .bundle
 config/database.yml
-config/memcached.yml
-config/oauth.yml
+config/instagram.yml
 db/schema.rb
 db/sphinx
 db/*.sqlite3
