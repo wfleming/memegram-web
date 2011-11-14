@@ -207,6 +207,7 @@ Devise.setup do |config|
   #   manager.default_strategies(:scope => :user).unshift :some_external_strategy
   # end
 
-  instagram = YAML.load(File.read(Pathname(Rails.root)+'config'+'instagram.yml'))[Rails.env]
-  config.omniauth :instagram, instagram['app_id'], instagram['app_secret'], :display => 'touch'
+  # causing issues right now, and we don't really need it on the web.
+  #instagram = YAML.load(File.read(Pathname(Rails.root)+'config'+'instagram.yml'))[Rails.env]
+  #config.omniauth :instagram, instagram['app_id'], instagram['app_secret'], :display => 'touch'
 end
