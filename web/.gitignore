@@ -1,0 +1,12 @@
+.bundle
+config/database.yml
+config/memcached.yml
+config/oauth.yml
+db/schema.rb
+db/sphinx
+db/*.sqlite3
+log/
+public/javascripts/bundles/
+public/stylesheets/bundles/
+public/uploads/*
+tmp/*
