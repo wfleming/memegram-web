@@ -1,0 +1,2 @@
+module MemegramsHelper
+end

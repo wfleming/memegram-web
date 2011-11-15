@@ -1,0 +1,2 @@
+class MemegramsController < ApplicationController
+end
