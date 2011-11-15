@@ -1,6 +1,4 @@
 # Generally good-to-ignore files
-# For platform-specific ignores, see .gitignore in platform project
-# subdirectories
 .DS_Store
 *~
 .#*
@@ -12,3 +10,15 @@
 .hgignore
 .hg/*
 .svn/*
+# Cocoa files to ignore
+.bundle
+config/database.yml
+config/instagram.yml
+db/schema.rb
+db/sphinx
+db/*.sqlite3
+log/
+public/javascripts/bundles/
+public/stylesheets/bundles/
+public/uploads/*
+tmp/*
