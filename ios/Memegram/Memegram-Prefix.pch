@@ -13,3 +13,20 @@
   #import <Foundation/Foundation.h>
   #import <CoreData/CoreData.h>
 #endif
+
+
+#ifdef DEBUG
+  #define DLOG(fmt, ...) NSLog(@"%s(%d): " fmt, __PRETTY_FUNCTION__, __LINE__, ##__VA_ARGS__)
+#else
+  #define DLOG(fmt, ...) ((void)0)
+#endif
+
+
+#ifdef DEBUG
+// make an assertion, throw a signal if it fails.
+#define DASSERT(con) { if (!(con)) { TTDPRINT(@"TTDASSERT failed: %s", #con); \
+{ __asm__("int $3\n" : : ); }; } \
+} ((void)0)
+#else
+  #define DASSERT(con) ((void)0)
+#endif

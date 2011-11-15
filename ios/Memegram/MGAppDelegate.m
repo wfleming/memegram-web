@@ -11,7 +11,23 @@
 #import "MGMasterViewController.h"
 
 #import "MGDetailViewController.h"
+#import "IGInstagramAPI.h"
 
+#pragma mark - constants
+
+NSString * const kDefaultsInstagramToken = @"InstagramToken";
+NSString * const kDefaultsMemegramToken = @"MemegramToken";
+
+
+#pragma mark -
+@interface MGAppDelegate (Private)
+
+- (void) ensureUserLoggedIn;
+
+@end
+
+
+#pragma mark -
 @implementation MGAppDelegate
 
 @synthesize window = _window;
@@ -23,30 +39,39 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
-    self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
-    // Override point for customization after application launch.
+  // Setup API base stuff
+  [IGInstagramAPI setClientId:OAUTH_INSTAGRAM_KEY];
+  [IGInstagramAPI setOAuthRedirctURL:OAUTH_INSTAGRAM_REDIRECT_URL];
+  
+  self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
+  // Override point for customization after application launch.
   if ([[UIDevice currentDevice] userInterfaceIdiom] == UIUserInterfaceIdiomPhone) {
-      MGMasterViewController *masterViewController = [[MGMasterViewController alloc] initWithNibName:@"MGMasterViewController_iPhone" bundle:nil];
-      self.navigationController = [[UINavigationController alloc] initWithRootViewController:masterViewController];
-      self.window.rootViewController = self.navigationController;
-      masterViewController.managedObjectContext = self.managedObjectContext;
+    MGMasterViewController *masterViewController = [[MGMasterViewController alloc] initWithNibName:@"MGMasterViewController_iPhone" bundle:nil];
+    self.navigationController = [[UINavigationController alloc] initWithRootViewController:masterViewController];
+    self.window.rootViewController = self.navigationController;
+    masterViewController.managedObjectContext = self.managedObjectContext;
   } else {
-      MGMasterViewController *masterViewController = [[MGMasterViewController alloc] initWithNibName:@"MGMasterViewController_iPad" bundle:nil];
-      UINavigationController *masterNavigationController = [[UINavigationController alloc] initWithRootViewController:masterViewController];
-      
-      MGDetailViewController *detailViewController = [[MGDetailViewController alloc] initWithNibName:@"MGDetailViewController_iPad" bundle:nil];
-      UINavigationController *detailNavigationController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
-  	
-      self.splitViewController = [[UISplitViewController alloc] init];
-      self.splitViewController.delegate = detailViewController;
-      self.splitViewController.viewControllers = [NSArray arrayWithObjects:masterNavigationController, detailNavigationController, nil];
-      
-      self.window.rootViewController = self.splitViewController;
-      masterViewController.detailViewController = detailViewController;
-      masterViewController.managedObjectContext = self.managedObjectContext;
+    MGMasterViewController *masterViewController = [[MGMasterViewController alloc] initWithNibName:@"MGMasterViewController_iPad" bundle:nil];
+    UINavigationController *masterNavigationController = [[UINavigationController alloc] initWithRootViewController:masterViewController];
+    
+    MGDetailViewController *detailViewController = [[MGDetailViewController alloc] initWithNibName:@"MGDetailViewController_iPad" bundle:nil];
+    UINavigationController *detailNavigationController = [[UINavigationController alloc] initWithRootViewController:detailViewController];
+
+    self.splitViewController = [[UISplitViewController alloc] init];
+    self.splitViewController.delegate = detailViewController;
+    self.splitViewController.viewControllers = [NSArray arrayWithObjects:masterNavigationController, detailNavigationController, nil];
+    
+    self.window.rootViewController = self.splitViewController;
+    masterViewController.detailViewController = detailViewController;
+    masterViewController.managedObjectContext = self.managedObjectContext;
   }
-    [self.window makeKeyAndVisible];
-    return YES;
+  
+  [self.window makeKeyAndVisible];
+  
+  
+  [self ensureUserLoggedIn];
+  
+  return YES;
 }
 
 - (void)applicationWillResignActive:(UIApplication *)application
@@ -83,6 +108,11 @@
 {
   // Saves changes in the application's managed object context before the application terminates.
   [self saveContext];
+}
+
+- (BOOL)application:(UIApplication *)application openURL:(NSURL *)url sourceApplication:(NSString *)sourceApplication annotation:(id)annotation {
+  //TODO - handle auth coming in
+  return NO;
 }
 
 - (void)saveContext
@@ -158,31 +188,15 @@
     __persistentStoreCoordinator = [[NSPersistentStoreCoordinator alloc] initWithManagedObjectModel:[self managedObjectModel]];
     if (![__persistentStoreCoordinator addPersistentStoreWithType:NSSQLiteStoreType configuration:nil URL:storeURL options:nil error:&error])
     {
-        /*
-         Replace this implementation with code to handle the error appropriately.
-         
-         abort() causes the application to generate a crash log and terminate. You should not use this function in a shipping application, although it may be useful during development. 
-         
-         Typical reasons for an error here include:
-         * The persistent store is not accessible;
-         * The schema for the persistent store is incompatible with current managed object model.
-         Check the error message to determine what the actual problem was.
-         
-         
-         If the persistent store is not accessible, there is typically something wrong with the file path. Often, a file URL is pointing into the application's resources directory instead of a writeable directory.
-         
-         If you encounter schema incompatibility errors during development, you can reduce their frequency by:
-         * Simply deleting the existing store:
-         [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil]
-         
-         * Performing automatic lightweight migration by passing the following dictionary as the options parameter: 
-         [NSDictionary dictionaryWithObjectsAndKeys:[NSNumber numberWithBool:YES], NSMigratePersistentStoresAutomaticallyOption, [NSNumber numberWithBool:YES], NSInferMappingModelAutomaticallyOption, nil];
-         
-         Lightweight migration will only work for a limited set of schema changes; consult "Core Data Model Versioning and Data Migration Programming Guide" for details.
-         
-         */
-        NSLog(@"Unresolved error %@, %@", error, [error userInfo]);
-        abort();
+#ifdef DEBUG
+      // quick fix (for dev) - attempt a delete and try again
+      // potential infinite loop if things are really messed up
+      [[NSFileManager defaultManager] removeItemAtURL:storeURL error:nil];
+      __persistentStoreCoordinator = nil;
+      [self persistentStoreCoordinator];
+#else
+      abort();
+#endif
     }    
     
     return __persistentStoreCoordinator;
@@ -196,6 +210,37 @@
 - (NSURL *)applicationDocumentsDirectory
 {
     return [[[NSFileManager defaultManager] URLsForDirectory:NSDocumentDirectory inDomains:NSUserDomainMask] lastObject];
+}
+
+@end
+
+
+#pragma mark -
+@implementation MGAppDelegate (Private)
+
+// both the memegram & instagram keys must be valid & present
+- (void) ensureUserLoggedIn {
+  NSUserDefaults *defaults = [NSUserDefaults standardUserDefaults];
+  
+  NSString *instagramToken = [defaults stringForKey:kDefaultsInstagramToken];
+  NSString *memegramToken = [defaults stringForKey:kDefaultsMemegramToken];
+  
+  BOOL clearInstagramToken = NO;
+  
+  if (!memegramToken) {
+    clearInstagramToken = YES;
+  } else {
+    //TODO - set clearInstagramToken to YES if token isn't valid
+  }
+  
+  if (clearInstagramToken) {
+    instagramToken = nil;
+  }
+  
+  // give the instagram token to IGInstagramAPI & let it check authenticity
+  [IGInstagramAPI setAccessToken:instagramToken];
+  
+  [IGInstagramAPI authenticateUser];
 }
 
 @end
