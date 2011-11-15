@@ -16,6 +16,4 @@ test:
   <<: *common
   database: memegram_test
 
-production:
-  adapter: postgresql
-  database: memegram_production
+# Production is handled by heroku
