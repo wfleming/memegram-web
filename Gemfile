@@ -29,8 +29,6 @@ gem 'instagram', :git => 'git://github.com/kylefox/instagram-ruby-gem.git', :ref
 gem 'airbrake'
 gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
 gem 'devise'
-gem 'omniauth'
-gem 'oa-oauth', :require => 'omniauth/oauth' # gives omniauth instagram strategy
 
 # Bundle gems for the local environment. Make sure to
 # put test-only gems in this group so their generators

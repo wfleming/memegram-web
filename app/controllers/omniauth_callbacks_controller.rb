@@ -1,5 +1,6 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   def instagram
+    Rails.logger.debug("OAuth ENV is #{env['omniauth.auth'].inspect}")
     # @user = User.find_or_create_for_instagram_oauth(env["omniauth.auth"])
 
     # user doesn't exist

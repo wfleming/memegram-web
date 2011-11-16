@@ -9,6 +9,8 @@ class AddUserFields < ActiveRecord::Migration
 
       t.string :instagram_token
       t.index :instagram_token, :unique => true
+      
+      t.string :instagram_avatar_url
 
       t.string :api_token #auth token for internal API
       t.index :api_token, :unique => true
@@ -20,8 +22,10 @@ class AddUserFields < ActiveRecord::Migration
 
   def down
     change_table :users do |t|
+      t.remove :instagram_user_id
       t.remove :instagram_username
       t.remove :instagram_token
+      t.remove :instagram_avatar_url
       t.remove :api_token
       t.remove :is_admin
     end
