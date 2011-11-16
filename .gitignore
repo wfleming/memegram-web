@@ -22,3 +22,4 @@ public/javascripts/bundles/
 public/stylesheets/bundles/
 public/uploads/*
 tmp/*
+.powder
