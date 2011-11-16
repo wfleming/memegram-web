@@ -7,6 +7,8 @@ Memegram::Application.routes.draw do
   ### WEB ROUTES
   mount RailsAdmin::Engine => '/admin', :as => 'rails_admin'
   devise_for :users
+  # custom oauth controller mapping
+  match '/auth/instagram/callback' => 'oauth#instagram_callback'
   resources :memegrams, only: [:show]
 
   root :to => "home#index"
