@@ -1,4 +1,4 @@
-Memogram::Application.routes.draw do
+Memegram::Application.routes.draw do
   ### API ROUTES
   namespace :api, path: 'api/1', format: :json do
     resources :memegrams

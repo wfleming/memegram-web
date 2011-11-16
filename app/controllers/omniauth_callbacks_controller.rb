@@ -1,5 +1,4 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
-  before_filter :validate_unprotected
   def instagram
     # @user = User.find_or_create_for_instagram_oauth(env["omniauth.auth"])
 
@@ -15,4 +14,9 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     #TODO: LOGGING! feedback!
     render :layout => false
   end
+  
+  def ios_redirect_url(instagram_token, api_token)
+    "memegram://auth?instagram_token=#{instagram_token}&api_token=#{api_token}"
+  end
+  private :ios_redirect_url
 end

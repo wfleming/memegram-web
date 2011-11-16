@@ -4,4 +4,4 @@
 require File.expand_path('../config/application', __FILE__)
 require 'rake'
 
-Memogram::Application.load_tasks
+Memegram::Application.load_tasks
