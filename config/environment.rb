@@ -10,4 +10,6 @@ Memegram::Application.initialize!
 Memegram::Application.configure do
   # Mailer setup
   config.action_mailer.default_url_options = { :host => HOST }
+  # set default URL generation options
+  Rails.application.routes.default_url_options[:host] = HOST
 end
