@@ -1,0 +1,7 @@
+development: &dev
+    key: "YOUR_KEY"
+    secret: "YOUR_SECRET"
+    bucket: "memegram_development"
+
+test:
+  <<: *dev

@@ -29,4 +29,7 @@ Memegram::Application.configure do
 
   # Expands the lines which load the assets
   config.assets.debug = true
+  
+  # set default URL generation options
+  Rails.application.routes.default_url_options[:host] = 'memegram.dev' 
 end

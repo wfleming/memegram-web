@@ -1,5 +1,5 @@
 class DeviseCreateUsers < ActiveRecord::Migration
-  def up
+  def change
     create_table(:users) do |t|
       t.database_authenticatable :null => false
       t.recoverable
@@ -10,9 +10,5 @@ class DeviseCreateUsers < ActiveRecord::Migration
 
     add_index :users, :email,                :unique => true
     add_index :users, :reset_password_token, :unique => true
-  end
-
-  def down
-    drop_table :users
   end
 end

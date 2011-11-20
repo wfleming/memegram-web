@@ -1,0 +1,16 @@
+<h1>Memegram</h1>
+
+<%= image_tag(@meme.s3_presentation_url, :alt => @meme.caption) %>
+
+<div class="caption">
+<% if @meme.caption.present? %>
+	<%= @meme.caption %>
+<% end %>
+</div>
+
+<div class="meta">
+	<p>
+		Made by <%= @meme.user.instagram_username %> <%= image_tag(@meme.user.instagram_avatar_url, :alt => @meme.user.instagram_username) %>
+		on <%= @meme.created_at %>
+	</p>
+</div>
