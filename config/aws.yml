@@ -1,0 +1,7 @@
+development: &dev
+    key: "0PSTEMQ59470BD0TVH82"
+    secret: "xqh5IuetXJF34o+ZvdDR9Hj8JjkeNiWia6nxdOcr"
+    bucket: "memegram_development"
+
+test:
+  <<: *dev

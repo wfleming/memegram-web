@@ -37,11 +37,15 @@ gem 'devise'
 #   gem 'webrat'
 # end
 
-
 group :test do
   gem 'factory_girl_rails',   '1.0'
   gem 'fakeweb'
   gem 'flexmock',             '0.8.7'
   gem 'shoulda',              '2.11.3'
   gem 'timecop'
+end
+
+group :production do
+  gem 'thin'
+  gem 'newrelic_rpm'
 end

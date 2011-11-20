@@ -57,4 +57,8 @@ Memegram::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
+  
+  # set default URL generation options
+  Rails.application.routes.default_url_options[:host] = 'memegram.herokuapp.com' # until custom domain issues are figured out
+  #config.default_url_options[:host] = 'meme-a-gram.com'
 end
