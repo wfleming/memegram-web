@@ -18,11 +18,11 @@ module Configuration
 
       if yaml.nil? || yaml['key'].nil? || yaml['secret'].nil? || yaml['bucket'].nil?
         Rails.logger.warn("Expected complete S3 config.")
+      else
+        @@key = yaml['key']
+        @@secret = yaml['secret']
+        @@bucket = yaml['bucket']
       end
-    
-      @@key = yaml['key']
-      @@secret = yaml['secret']
-      @@bucket = yaml['bucket']
     end
   
     def self.key

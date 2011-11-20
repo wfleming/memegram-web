@@ -59,7 +59,4 @@ Memegram::Application.configure do
 
   # Send deprecation notices to registered listeners
   config.active_support.deprecation = :notify
-  
-  # set default URL generation options
-  Rails.application.routes.default_url_options[:host] = HOST
 end
