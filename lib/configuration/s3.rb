@@ -16,7 +16,7 @@ module Configuration
                 }
       end
 
-      if yaml['key'].nil? || yaml['secret'].nil? || yaml['bucket'].nil?
+      if yaml.nil? || yaml['key'].nil? || yaml['secret'].nil? || yaml['bucket'].nil?
         raise ArgumentError.new('Expected complete S3 config.')
       end
     

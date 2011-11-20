@@ -14,7 +14,7 @@ module Configuration
                 }
       end
 
-      if yaml['app_id'].nil? || yaml['app_secret'].nil?
+      if yaml.nil? || yaml['app_id'].nil? || yaml['app_secret'].nil?
         raise ArgumentError.new('Expected complete Instagram config.')
       end
     
