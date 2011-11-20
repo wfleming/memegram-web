@@ -7,6 +7,12 @@ class User < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :email, :password, :password_confirmation, :remember_me
   
+  validates :email, :uniqueness => true, :allow_blank => true
+  validates :instagram_user_id, :uniqueness => true, :allow_blank => true
+  validates :instagram_username, :uniqueness => true, :allow_blank => true
+  
+  # devise makes this '', which makes DB constraints unhappy.
+  before_save -> { self.email = nil if self.email.blank? }
   before_save :generate_api_token, :if => -> { api_token.blank? }
   
   def self.find_or_create_from_instagram_oauth_response(response)
