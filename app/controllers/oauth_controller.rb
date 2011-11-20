@@ -8,9 +8,9 @@ class OauthController < ApplicationController
       callback_url = "#{callback_url}?client=#{params[:client]}"
     end
     
-    logger.debug("ASKING INSTAGRAM FOR TOKEN. WE GOT CODE #{params[:code]} && redirect_uri #{callback_url}. Our client_id is #{Instagram.client_id}")
+    logger.info("ASKING INSTAGRAM FOR TOKEN. WE GOT CODE #{params[:code]} && redirect_uri #{callback_url}. Our client_id is #{Instagram.client_id}")
     response = Instagram.get_access_token(params[:code], :redirect_uri => callback_url)
-    logger.debug("INSTAGRAM ACCESS RESPONSE IS #{response.inspect}")
+    logger.info("INSTAGRAM ACCESS RESPONSE IS #{response.inspect}")
     
     @user = User.find_or_create_from_instagram_oauth_response(response)
     
