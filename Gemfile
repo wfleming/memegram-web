@@ -5,7 +5,7 @@ gem 'rails', '3.1.1'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
-gem 'mysql2'
+gem 'mysql2', :group => [:development, :test]
 
 # Use unicorn as the web server
 gem 'unicorn'
@@ -49,5 +49,5 @@ group :production do
   gem 'thin'
   gem 'newrelic_rpm'
   gem 'uglifier' # for JS compression
-  gem 'activerecord-postgresql-adapter'
+  gem 'pg'  #postgresql for heroku
 end
