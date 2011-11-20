@@ -8,7 +8,7 @@ gem 'rails', '3.1.1'
 gem 'mysql2', :group => [:development, :test]
 
 # Use unicorn as the web server
-gem 'unicorn'
+#gem 'unicorn' - using thin, see production group
 
 # Deploy with Capistrano
 gem 'capistrano'
