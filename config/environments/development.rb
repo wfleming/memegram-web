@@ -31,5 +31,5 @@ Memegram::Application.configure do
   config.assets.debug = true
   
   # set default URL generation options
-  Rails.application.routes.default_url_options[:host] = 'memegram.dev' 
+  Rails.application.routes.default_url_options[:host] = HOST
 end

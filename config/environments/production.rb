@@ -1,3 +1,5 @@
+HOST = 'memegram.herokuapp.com' # until custom domain issues are figured out
+
 Memegram::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
 
@@ -59,6 +61,5 @@ Memegram::Application.configure do
   config.active_support.deprecation = :notify
   
   # set default URL generation options
-  Rails.application.routes.default_url_options[:host] = 'memegram.herokuapp.com' # until custom domain issues are figured out
-  #config.default_url_options[:host] = 'meme-a-gram.com'
+  Rails.application.routes.default_url_options[:host] = HOST
 end
