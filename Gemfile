@@ -49,4 +49,5 @@ group :production do
   gem 'thin'
   gem 'newrelic_rpm'
   gem 'uglifier' # for JS compression
+  gem 'activerecord-postgresql-adapter'
 end
