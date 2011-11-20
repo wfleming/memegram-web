@@ -10,7 +10,6 @@ module Configuration
       if File.exist?(file_name)
         yaml = YAML.load(File.read(file_name))[Rails.env]
       else # use env vars for the sake of Heroku
-        puts "PULLING S3 FROM THE ENV: KEY IS #{ENV['S3_KEY']}, SECRET IS #{ENV['S3_SECRET']}"
         yaml = {'key' => ENV['S3_KEY'],
                 'secret' => ENV['S3_SECRET'],
                 'bucket' => ENV['S3_BUCKET']
