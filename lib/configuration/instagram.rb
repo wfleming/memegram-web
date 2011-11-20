@@ -15,7 +15,7 @@ module Configuration
       end
 
       if yaml.nil? || yaml['app_id'].nil? || yaml['app_secret'].nil?
-        raise ArgumentError.new('Expected complete Instagram config.')
+        Rails.logger.warn('Expected complete Instagram config.')
       end
     
       @@app_id = yaml['app_id']
