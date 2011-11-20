@@ -17,7 +17,7 @@ module Configuration
       end
 
       if yaml.nil? || yaml['key'].nil? || yaml['secret'].nil? || yaml['bucket'].nil?
-        raise ArgumentError.new('Expected complete S3 config.')
+        Rails.logger.warn("Expected complete S3 config.")
       end
     
       @@key = yaml['key']
