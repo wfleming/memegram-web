@@ -48,4 +48,5 @@ end
 group :production do
   gem 'thin'
   gem 'newrelic_rpm'
+  gem 'uglifier' # for JS compression
 end

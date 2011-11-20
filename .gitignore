@@ -21,5 +21,6 @@ log/
 public/javascripts/bundles/
 public/stylesheets/bundles/
 public/uploads/*
+public/assets
 tmp/*
 .powder
