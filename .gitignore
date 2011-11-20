@@ -14,6 +14,7 @@
 .bundle
 config/database.yml
 config/instagram.yml
+config/aws.yml
 db/schema.rb
 db/sphinx
 db/*.sqlite3
