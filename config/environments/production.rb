@@ -1,4 +1,4 @@
-HOST = 'memegram.herokuapp.com' # until custom domain issues are figured out
+HOST = 'meme-a-gram.com'
 
 Memegram::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
