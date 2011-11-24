@@ -19,9 +19,6 @@ db/schema.rb
 db/sphinx
 db/*.sqlite3
 log/
-public/javascripts/bundles/
-public/stylesheets/bundles/
 public/uploads/*
-public/assets
 tmp/*
 .powder
