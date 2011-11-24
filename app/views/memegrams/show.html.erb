@@ -1,6 +1,6 @@
 <h1>Memegram</h1>
 
-<%= image_tag(@meme.s3_presentation_url, :alt => @meme.caption) %>
+<%= image_tag(@meme.presentation_url, :alt => @meme.caption) %>
 
 <div class="caption">
 <% if @meme.caption.present? %>
