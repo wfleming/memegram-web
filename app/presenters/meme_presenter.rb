@@ -15,7 +15,7 @@ class MemePresenter < BasePresenter
         :instagram_source_id => @meme.instagram_source_id,
         :instagram_source_link => @meme.instagram_source_link,
         :user_id => @meme.user_id,
-        :image_url => meme.s3_presentation_url,
+        :image_url => meme.presentation_url,
         :link => memegram_url(@meme)
       }
     }

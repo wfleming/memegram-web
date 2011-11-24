@@ -35,12 +35,24 @@ class Meme < ActiveRecord::Base
     Rails.logger.error("Couldn't find key for #{self} on S3! Badness! #{e}")
   end
   
+  # a cached s3 presentation URL - used when cloudfront is not available
+  # see presentation_url
   def s3_presentation_url
     obj = self.s3_object
     if obj.present?
       @s3_presentation_url ||= obj.url(:expires_in => S3_EXPIRATION)
     else
       nil
+    end
+  end
+  
+  # the presentation_url that should really be used - uses the asset host when defined,
+  # falls back to S3 otherwise.
+  def presentation_url
+    if defined?(MEME_ASSET_HOST) && MEME_ASSET_HOST.present?
+      "#{MEME_ASSET_HOST}/#{self.resource_url}"
+    else
+      self.s3_presentation_url
     end
   end
   

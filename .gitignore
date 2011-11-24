@@ -10,7 +10,7 @@
 .hgignore
 .hg/*
 .svn/*
-# Cocoa files to ignore
+# Rails files to ignore
 .bundle
 config/database.yml
 config/instagram.yml

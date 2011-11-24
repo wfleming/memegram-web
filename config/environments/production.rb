@@ -1,4 +1,5 @@
 HOST = 'meme-a-gram.com'
+MEME_ASSET_HOST = "memes.#{HOST}"
 
 Memegram::Application.configure do
   # Settings specified here will take precedence over those in config/application.rb
