@@ -46,6 +46,6 @@ module Memegram
     config.assets.version = '1.0'
     
     # to make sure DB doesn't get hit during precompile
-    config.assets.initialize_on_precompile = false
+    # config.assets.initialize_on_precompile = false
   end
 end
