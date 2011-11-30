@@ -1,4 +1,4 @@
-HOST = 'meme-a-gram.com'
+HOST = 'lolgramz.com'
 MEME_ASSET_HOST = "memes.#{HOST}"
 
 Memegram::Application.configure do
