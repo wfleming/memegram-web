@@ -24,7 +24,7 @@ class OauthController < ApplicationController
   
   # the URL to redirect to on the client to get info back to the client
   def ios_client_callback_url(user)
-    "memegram://auth_callback?instagram_token=#{user.instagram_token}&api_token=#{user.api_token}"
+    "lolgramz://auth_callback?instagram_token=#{user.instagram_token}&api_token=#{user.api_token}"
   end
   private :ios_client_callback_url
 end
