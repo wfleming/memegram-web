@@ -37,7 +37,7 @@ module Memegram
     config.encoding = "utf-8"
 
     # Configure sensitive parameters which will be filtered from the log file.
-    config.filter_parameters += [:password]
+    config.filter_parameters += [:password, :token]
 
     # Enable the asset pipeline
     config.assets.enabled = true
@@ -45,7 +45,12 @@ module Memegram
     # Version of your assets, change this if you want to expire all your assets
     config.assets.version = '1.0'
     
-    # to make sure DB doesn't get hit during precompile
-    # config.assets.initialize_on_precompile = false
+    # do not use database when precompiling assets
+    # (good for performance, also required by Heroku)
+    config.assets.initialize_on_precompile = false
+    
+    # workaround for rails_admin not precompiling correctly when initialize_on_precompile == false
+    # see https://github.com/sferik/rails_admin/issues/765
+    config.assets.precompile += %w( rails_admin/rails_admin.css rails_admin/rails_admin.js )
   end
 end
