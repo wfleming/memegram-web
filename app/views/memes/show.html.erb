@@ -1,4 +1,4 @@
-<img src="<%= @meme.presentation_url %> alt="@meme.caption" />
+<%= image_tag(@meme.presentation_url, :alt => @meme.caption) %>
 
 <div class="caption">
 <% if @meme.caption.present? %>

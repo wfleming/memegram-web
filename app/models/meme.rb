@@ -50,7 +50,7 @@ class Meme < ActiveRecord::Base
   # falls back to S3 otherwise.
   def presentation_url
     if defined?(MEME_ASSET_HOST) && MEME_ASSET_HOST.present?
-      "#{MEME_ASSET_HOST}/#{self.s3_resource_url}"
+      "http://#{MEME_ASSET_HOST}/#{self.s3_resource_url}"
     else
       self.s3_presentation_url
     end
