@@ -1,6 +1,4 @@
-<h1>Memegram</h1>
-
-<%= image_tag(@meme.presentation_url, :alt => @meme.caption) %>
+<img src="<%= @meme.presentation_url %> alt="@meme.caption" />
 
 <div class="caption">
 <% if @meme.caption.present? %>
