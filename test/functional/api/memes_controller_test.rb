@@ -1,6 +1,6 @@
 require 'test_helper'
 
-class Api::MemegramControllerTest < ActionController::TestCase
+class Api::MemesControllerTest < ActionController::TestCase
   # test "the truth" do
   #   assert true
   # end

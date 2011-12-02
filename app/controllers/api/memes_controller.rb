@@ -1,4 +1,4 @@
-class Api::MemegramsController < Api::ApiController
+class Api::MemesController < Api::ApiController
   before_filter :authenticate!
   
   def index
