@@ -114,9 +114,6 @@ GEM
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
     mime-types (1.17.2)
-    mobile-fu (0.2.1)
-      rack-mobile-detect
-      rails
     multi_json (1.0.4)
     multipart-post (1.1.3)
     mysql2 (0.3.10)
@@ -127,8 +124,6 @@ GEM
     rack (1.3.5)
     rack-cache (1.1)
       rack (>= 0.4)
-    rack-mobile-detect (0.3.0)
-      rack
     rack-mount (0.8.3)
       rack (>= 1.0.0)
     rack-pjax (0.5.5)
@@ -197,7 +192,6 @@ DEPENDENCIES
   fakeweb
   flexmock (= 0.8.7)
   instagram!
-  mobile-fu
   mysql2
   newrelic_rpm
   pg
