@@ -8,7 +8,8 @@ class Meme < ActiveRecord::Base
   
   validates :user, :presence => true
   validates :instagram_source_id, :presence => true
-  validates :instagram_source_link, :presence => true
+# apparently we can't guarantee this will always be present - some in the API have <null> here.
+#  validates :instagram_source_link, :presence => true
   validates :s3_resource_url, :presence => true, :if => :validate_s3_resource_url
   
   def attach_image!(image)

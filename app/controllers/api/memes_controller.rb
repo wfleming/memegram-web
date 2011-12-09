@@ -17,7 +17,8 @@ class Api::MemesController < Api::ApiController
     if image.blank? || attrs.blank?
       #TODO detailed message
       logger.debug("BAD REQUEST - image or attrs is blank")
-      error! :bad_request
+      #TODO - move back to bad_request after client is updated
+      error! :precondition_failed
       return
     end
   
@@ -28,7 +29,8 @@ class Api::MemesController < Api::ApiController
     meme.validate_s3_resource_url = false
     if !meme.valid?
       logger.debug("MEME NOT VALID BEFORE S3 UPLOAD ATTEMPT: #{meme.errors.inspect}")
-      error! :bad_request
+      #TODO - move back to bad_request after client is updated
+      error! :precondition_failed
       return
     end
     meme.validate_s3_resource_url = true
