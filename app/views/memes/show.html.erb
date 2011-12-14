@@ -2,13 +2,14 @@
 
 <div class="caption">
 <% if @meme.caption.present? %>
-	<%= @meme.caption %>
+  <%= @meme.caption %>
 <% end %>
 </div>
 
 <div class="meta">
-	<p>
-		Made by <%= @meme.user.instagram_username %> <%= image_tag(@meme.user.instagram_avatar_url, :alt => @meme.user.instagram_username) %>
-		on <%= @meme.created_at %>
-	</p>
+  <p>
+    Made by
+    <%= @meme.user.instagram_username %> <%= image_tag(@meme.user.instagram_avatar_url, :alt => @meme.user.instagram_username) %>
+    <%= time_ago_in_words @meme.created_at %> ago.
+  </p>
 </div>

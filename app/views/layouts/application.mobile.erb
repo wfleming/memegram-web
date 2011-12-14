@@ -1,0 +1,21 @@
+<% content_for :meta_tags,
+      <<-MOBILE_META.html_safe
+      <meta name="viewport" content = "width = device-width, initial-scale = 1.0, user-scalable = no" />
+      MOBILE_META
+%>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%= meta_tags yield(:meta_tags) %>
+  <%= title_tag yield(:page_title) %>
+  <%= stylesheet_link_tag('application.mobile') %>
+</head>
+<body>
+  <h1>Lolgramz MOBILE</h1>
+
+  <%= yield %>
+
+  <%# javascript_include_tag('application.mobile') %>
+  <%# javascript_tags %>
+</body>
+</html>

@@ -1,5 +1,7 @@
 class HomeController < ApplicationController
+  exclude_mobile_for(:index)
+  
   def index
-    #static! for now!
+    render :layout => false
   end
 end
