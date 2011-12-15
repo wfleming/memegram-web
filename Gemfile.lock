@@ -187,6 +187,7 @@ PLATFORMS
 DEPENDENCIES
   airbrake
   aws-s3
+  coffee-rails
   devise
   factory_girl_rails (= 1.0)
   fakeweb

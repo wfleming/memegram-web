@@ -14,6 +14,7 @@ gem 'instagram', :git => 'git://github.com/kylefox/instagram-ruby-gem.git', :ref
 gem 'airbrake'
 gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
 gem 'devise'
+gem 'coffee-rails'
 
 group :test do
   gem 'fakeweb'
