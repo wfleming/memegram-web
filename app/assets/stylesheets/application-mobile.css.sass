@@ -14,8 +14,9 @@ body
   padding: $header-padding
   position: relative
   $logo-height: 20px
+  $logo-width: 74px
   #site-logo
-    width: 74px
+    width: $logo-width
     height: $logo-height
     display: inline-block
     a /* the root url link */
@@ -24,6 +25,8 @@ body
       width: 100%
       height: 100%
       background: transparent image-url("mobile/weblogo.png") 0 0
+      background-size: $logo-width $logo-height
+      background-repeat: no-repeat
       @media only screen and (-webkit-min-device-pixel-ratio: 2)
         background-image: image-url("mobile/weblogo@2x.png")
   .download
