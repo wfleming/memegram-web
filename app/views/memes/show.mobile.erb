@@ -1,1 +1,18 @@
-<%= render :template => 'memes/show.html' %>
+<%= content_for :stylesheets, stylesheet_link_tag('memes-mobile') %>
+
+<div class="module meta-wrap">
+  <div class="meta">
+    <div class="author">
+      <%= image_tag(@meme.user.instagram_avatar_url, :alt => @meme.user.instagram_username, :class => 'avatar') %>
+      <p class="username"><%= @meme.user.instagram_username %></p>
+    </div>
+    <p class="when"><%= time_ago_in_words @meme.created_at %> ago</p>
+  </div>
+</div>
+<%= image_tag(@meme.presentation_url, :alt => @meme.caption, :class => 'meme') %>
+
+<% if @meme.caption.present? %>
+  <div class="module caption">
+    <p><%= @meme.caption %></p>
+  </div>
+<% end %>

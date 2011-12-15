@@ -1,0 +1,61 @@
+@import 'reset', 'colors'
+
+$body-width: 320px
+$body-padding: 1px
+$body-content-width: $body-width - ($body-padding * 2)
+body
+  width: $body-width
+  background-color: $page-background
+  font-family: "Helvetica Neue", Helvetica, Verdana, Arial, sans-serif
+
+#site-header
+  $header-padding: 4px
+  width: $body-width - ($header-padding * 2)
+  padding: $header-padding
+  position: relative
+  $logo-height: 20px
+  #site-logo
+    width: 74px
+    height: $logo-height
+    display: inline-block
+    a /* the root url link */
+      display: block
+      text-indent: -999em
+      width: 100%
+      height: 100%
+      background: transparent image-url("mobile/weblogo.png") 0 0
+      @media only screen and (-webkit-min-device-pixel-ratio: 2)
+        background-image: image-url("mobile/weblogo@2x.png")
+  .download
+    $height: $logo-height - 4px
+    text-align: right
+    display:  inline-block
+    position: absolute
+    top: $header-padding
+    right: $header-padding
+    height: $height
+    a /* the app store link */
+      $font-size: 10px
+      font-size: $font-size
+      text-decoration: none
+      text-transform: uppercase
+      color:  #ffffff
+      &:visited, &:hover, &:active
+        color: #ffffff
+      $padding: (($height - $font-size) / 2) - 1px
+      padding: $padding
+      background-color: lighten($logo-grey, 20%)
+      border-radius: $padding
+      -webkit-border-radius: $padding
+      -moz-border-radius: $padding
+      
+#site-body
+  width: $body-content-width
+  padding: 0 $body-padding 
+  
+div.module
+  $padding: 6px
+  background-color: $module-background
+  border-radius: $padding
+  -webkit-border-radius: $padding
+  -moz-border-radius: $padding

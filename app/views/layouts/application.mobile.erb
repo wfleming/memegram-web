@@ -8,12 +8,20 @@
 <head>
   <%= meta_tags yield(:meta_tags) %>
   <%= title_tag yield(:page_title) %>
-  <%= stylesheet_link_tag('application.mobile') %>
+  <%= stylesheet_link_tag('application-mobile') %>
+  <%= stylesheet_tags %>
 </head>
 <body>
-  <h1>Lolgramz MOBILE</h1>
+  <div id="site-header">
+    <%= header_logo %>
+    <div class="download">
+      <%= link_to "Download on the App Store", appstore_url %>
+    </div>
+  </div>
 
-  <%= yield %>
+  <div id="site-body">
+    <%= yield %>
+  </div>
 
   <%# javascript_include_tag('application.mobile') %>
   <%# javascript_tags %>

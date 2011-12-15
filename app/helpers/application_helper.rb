@@ -1,6 +1,6 @@
 module ApplicationHelper
   def title_tag(page_title)
-    content_tag :title, [page_title, 'Lolgramz'].
+    content_tag :title, [page_title, SITE_NAME].
                          reject { |x| x.to_s.strip.blank? }.
                          join(' - ')
   end
@@ -26,7 +26,7 @@ module ApplicationHelper
   #
   # content_for :stylesheets, stylesheet_link_tag('foo', ...)
   def stylesheet_tags
-    content_for :stylesheets
+    content_for(:stylesheets)
   end
   
   # Returns HTML for <script> tags that belong on a page.
@@ -34,6 +34,16 @@ module ApplicationHelper
   #
   # content_for :javascripts, javascript_include_tag('foo', ...)
   def javascript_tags
-    content_for :javascripts
+    content_for(:javascripts)
+  end
+  
+  def appstore_url
+    "http://itunes.com/apps/lolgramz/"
+  end
+  
+  def header_logo
+    content_tag :h1, :id => 'site-logo' do
+      link_to SITE_NAME, root_path
+    end
   end
 end

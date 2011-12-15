@@ -1,0 +1,46 @@
+@import 'colors'
+
+$avatar-size: 29px
+$padding: 6px
+
+div.meta-wrap
+  height: $avatar-size + ($padding * 2)
+  div.meta
+    width: 100%
+    position: relative
+    padding: $padding
+    div.author
+      vertical-align: middle
+      font-weight: bold
+      width: auto
+      img.avatar
+        height: $avatar-size
+        width: $avatar-size
+        float: left
+        margin-right: $padding
+        border: 1px solid #fff
+      p.username
+        display: inline-block
+        vertical-align: middle
+        color: #fff
+    p.when
+      display: inline-block
+      vertical-align: middle
+      position: absolute
+      top: $padding * 2
+      right: $padding * 3
+      color: darken(#fff, 20%)
+      font-size: 50%
+
+img.meme
+  width: 320px
+  height: 320px
+  margin: $padding 0
+  
+div.caption
+  width: 100%
+  color: darken(#fff, 20%)
+  font-size: 80%
+  p
+    padding: $padding
+  
