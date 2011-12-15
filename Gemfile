@@ -14,20 +14,13 @@ gem 'instagram', :git => 'git://github.com/kylefox/instagram-ruby-gem.git', :ref
 gem 'airbrake'
 gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
 gem 'devise'
-# gem 'mobile-fu'
-
-# Bundle gems for the local environment. Make sure to
-# put test-only gems in this group so their generators
-# and rake tasks are available in development mode:
-group :development, :test do
-  gem 'factory_girl_rails',   '1.0'
-  gem 'shoulda',              '2.11.3'
-end
 
 group :test do
   gem 'fakeweb'
   gem 'flexmock',             '0.8.7'
   gem 'timecop'
+  gem 'shoulda',              '2.11.3'
+  gem 'factory_girl_rails',   '1.0'
 end
 
 group :production do
