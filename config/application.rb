@@ -54,5 +54,14 @@ module Memegram
     # workaround for rails_admin not precompiling correctly when initialize_on_precompile == false
     # see https://github.com/sferik/rails_admin/issues/765
     config.assets.precompile += %w( rails_admin/rails_admin.css rails_admin/rails_admin.js )
+    
+    # workaround for all sorts of delightful things being broken by initialize_on_precompile == false
+    %w(javascripts stylesheets).each do |dir_name|
+      dir = Dir.open(Rails.root + 'app' + 'assets' + dir_name)
+      dir.grep(/^[A-Za-z].+\.(js|css)\..+/).each do |file_name|
+        logical_path = file_name.gsub(File.extname(file_name), '')
+        config.assets.precompile << logical_path
+      end
+    end
   end
 end
