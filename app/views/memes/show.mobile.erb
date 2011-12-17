@@ -9,6 +9,7 @@
     <p class="when"><%= time_ago_in_words @meme.created_at %> ago</p>
   </div>
 </div>
+
 <%= image_tag(@meme.presentation_url, :alt => @meme.caption, :class => 'meme') %>
 
 <% if @meme.caption.present? %>

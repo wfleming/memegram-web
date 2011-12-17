@@ -9,7 +9,7 @@ if defined?(Bundler)
   # Bundler.require(:default, :assets, Rails.env)
 end
 
-SITE_NAME = "Instagramz"
+SITE_NAME = "Lolgramz"
 
 module Memegram
   class Application < Rails::Application

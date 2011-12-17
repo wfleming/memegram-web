@@ -1,1 +1,60 @@
 @import 'reset', 'colors', 'variables'
+
+$content-width: 1000px
+
+body
+  background-color: $page-background
+  font-family: $font-stack
+  
+a, a:visited, a:active, a:hover
+  color: #333
+
+#site-header
+  width: $content-width
+  margin: 0 auto
+  $header-padding: 10px
+  padding: $header-padding
+  position: relative
+  $logo-height: 85px
+  $logo-width: 300px
+  #site-logo
+    width: $logo-width
+    height: $logo-height
+    display: inline-block
+    a /* the root url link */
+      display: block
+      text-indent: -999em
+      width: 100%
+      height: 100%
+      background: transparent image-url("shared/weblogo.png") 0 0 no-repeat
+      background-size: $logo-width $logo-height
+  .download
+    $height: 30px
+    text-align: right
+    display:  inline-block
+    position: absolute
+    right: $header-padding
+    top: $header-padding + ($logo-height/2)
+    height: $height
+    a /* the app store link */
+      $font-size: 12px
+      font-size: $font-size
+      text-decoration: none
+      text-transform: uppercase
+      color:  #ffffff
+      $padding: (($height - $font-size) / 2) - 1px
+      padding: $padding
+      background-color: lighten($logo-grey, 20%)
+      border-radius: $padding
+      -webkit-border-radius: $padding
+      -moz-border-radius: $padding
+      &:visited, &:hover, &:active
+        color: #ffffff
+      &:hover, &:active
+        background-color: lighten($logo-grey, 40%)
+
+
+#site-body
+  width: $content-width
+  padding: 10px
+  margin: 0 auto

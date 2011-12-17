@@ -1,3 +1,82 @@
-// Place all the styles related to the memegrams controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'colors', 'variables'
+
+$content-width: 1000px /* comes from application.css.sass */
+$content-padding: 10px /* also from application.css.sass */
+$gutter: 10px /* ... ditto. */
+$column-width: 493px
+
+div.column-container
+  position: relative
+  width: 100%
+
+div.column
+  width: $column-width
+  display: inline-block
+  vertical-align: top
+  margin: 0
+
+div.image-column
+  
+  
+div.meta-column
+  margin-left: $gutter
+
+img.meme
+  background-color: #fff
+  $padding: 10px
+  padding: $padding
+  border-radius: $padding
+  -webkit-border-radius: $padding
+  -moz-border-radius: $padding
+  $img-size: $column-width - 20px
+  width: $img-size
+  height: $img-size
+  
+div.module
+  background-color: lighten($module-background, 35%)
+  color: lighten(#000, 15%)
+  text-shadow: lighten($module-background, 50%) 1px 1px 0px
+  font-size: 0.90em
+  $padding: 10px
+  padding: $padding
+  border-radius: $padding
+  -webkit-border-radius: $padding
+  -moz-border-radius: $padding
+
+div.module p
+  margin-bottom: 10px
+
+div.meta
+  $avatar-size: 40px
+  height: $avatar-size
+  width: 100%
+  position: relative
+  text-shadow: none
+  font-size: 1.2em
+  padding-bottom: 10px
+  border-bottom: 1px solid #fff
+  div.author
+    vertical-align: middle
+    font-weight: bold
+    width: auto
+    img.avatar
+      height: $avatar-size
+      width: $avatar-size
+      float: left
+      margin-right: 10px
+      border: 1px solid #fff
+    p.username
+      display: inline-block
+      vertical-align: middle
+      color: #fff
+  p.when
+    display: inline-block
+    vertical-align: middle
+    position: absolute
+    top: 0
+    right: 0
+    color: darken(#fff, 20%)
+    font-size: 50%
+    
+div.caption
+  margin-top: 10px

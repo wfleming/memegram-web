@@ -1,17 +1,23 @@
 <%= content_for :stylesheets, stylesheet_link_tag('memes') %>
 
-<%= image_tag(@meme.presentation_url, :alt => @meme.caption) %>
-
-<div class="caption">
-<% if @meme.caption.present? %>
-  <%= @meme.caption %>
-<% end %>
-</div>
-
-<div class="meta">
-  <p>
-    Made by
-    <%= @meme.user.instagram_username %> <%= image_tag(@meme.user.instagram_avatar_url, :alt => @meme.user.instagram_username) %>
-    <%= time_ago_in_words @meme.created_at %> ago.
-  </p>
-</div>
+<div class="column-container">
+  <div class="column image-column">
+    <%= image_tag(@meme.presentation_url, :alt => @meme.caption, :class => 'meme') %>
+  </div>
+  <div class="column meta-column">
+    <div class="module">
+      <div class="meta">
+        <div class="author">
+          <%= image_tag(@meme.user.instagram_avatar_url, :alt => @meme.user.instagram_username, :class => 'avatar') %>
+          <p class="username"><%= @meme.user.instagram_username %></p>
+        </div>
+        <p class="when"><%= time_ago_in_words @meme.created_at %> ago</p>
+      </div>
+      
+      <div class="caption">
+        <% if @meme.caption.present? %>
+          <p><%= @meme.caption %></p>
+        <% end %>
+      </div>
+    </div>
+  </div>
