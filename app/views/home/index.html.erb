@@ -1,1 +1,38 @@
-The Lolgramz homepage!
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <%= meta_tags yield(:meta_tags) %>
+  <%= title_tag yield(:page_title) %>
+  <%= stylesheet_link_tag('home') %>
+</head>
+<body>
+  <div id="site-body">
+    <div class="column-container">
+      <div class="column left-column">
+        <div class="iphone"><div class="screenshot"></div></div>
+      </div>
+      <div class="column right-column">
+        <h1 id="site-logo"><%= SITE_NAME %></h1>
+      
+        <div class="module">
+          <p>
+            You've found Lolgramz, an easy, fun way to turn your Instagram
+            photos into hilarious lolcat-style images and share them with your
+            friends.
+          </p>
+          <p>
+            Check out <%= link_to 'Lolgramz on the App Store', appstore_url %>,
+            and get creating!
+          </p>
+        </div>
+        
+        <%= link_to image_tag('home/appstore.png', alt: 'Available on the App Store'),
+                    appstore_url, :class => 'appstore' %>
+          
+      </div>
+    </div>
+  </div>
+
+  <%= render :partial => 'layouts/google_analytics.html' %>
+</body>
+</html>

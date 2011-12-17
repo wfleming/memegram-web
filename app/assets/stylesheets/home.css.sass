@@ -1,3 +1,77 @@
-// Place all the styles related to the home controller here.
-// They will automatically be included in application.css.
-// You can use Sass (SCSS) here: http://sass-lang.com/
+@import 'reset', 'colors', 'variables'
+
+body
+  background-color: $page-background
+  font-family: $font-stack
+  
+a, a:visited, a:active, a:hover
+  color: #333
+  
+$column-width: 321px  
+$content-margin: 25px
+$gutter: 10px
+/* not sure why the extra 4 is needed, but wihout it the right column ends up
+ * below left left column */
+$content-width: (2 * $column-width) + (2 * $content-margin) + $gutter + 4
+
+#site-body
+  width: $content-width
+  margin: 0 auto
+  
+#site-logo
+  width: $column-width
+  height: 91px
+  display: block
+  margin: 0 auto
+  text-indent: -999em
+  background: transparent image-url("home/weblogo.png") 0 0 no-repeat
+  
+div.column-container
+  position: relative
+  width: $content-width - (2 * $content-margin)
+  margin: $content-margin
+
+div.column
+  width: $column-width
+  display: inline-block
+  vertical-align: top
+  margin: 0
+
+div.left-column
+  
+div.right-column
+  margin-left: $gutter
+  
+div.iphone
+  width: $column-width
+  height: 690px
+  background: transparent image-url("home/iphone.png") no-repeat 0 0
+  position: relative
+  div.screenshot
+    position: absolute
+    top: 108px
+    left: 38px
+    width: 250px
+    height: 375px
+    background: transparent image-url("home/screenshot1.png") no-repeat 0 0
+    
+div.module
+  margin-top: 25px
+  background-color: lighten($module-background, 35%)
+  color: lighten(#000, 15%)
+  text-shadow: lighten($module-background, 50%) 1px 1px 0px
+  font-size: 0.90em
+  $padding: 10px
+  padding: $padding
+  border-radius: $padding
+  -webkit-border-radius: $padding
+  -moz-border-radius: $padding
+  
+div.module p
+  margin-bottom: 10px
+  
+a.appstore
+  width: 144px
+  display: block
+  margin: 25px auto 0 auto
+  
