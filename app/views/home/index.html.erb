@@ -26,7 +26,11 @@
             friends.
           </p>
           <p>
-            Check out <%= link_to 'Lolgramz on the App Store', appstore_url %>,
+            Check out <%= link_to 'Lolgramz on the App Store', appstore_url,
+                          :class => 'gaevent',
+                          :'data-gaecategory' => 'outgoinglink',
+                          :'data-gaeaction' => 'appstore',
+                          :'data-gaelabel' => 'home-text' %>,
             and get creating!
           </p>
         </div>
@@ -35,7 +39,7 @@
                     appstore_url, :class => 'appstore gaevent',
                     :'data-gaecategory' => 'outgoinglink',
                     :'data-gaeaction' => 'appstore',
-                    :'data-gaelabel' => 'home' %>
+                    :'data-gaelabel' => 'home-button' %>
           
       </div>
     </div>
