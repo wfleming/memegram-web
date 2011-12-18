@@ -15,7 +15,11 @@
   <div id="site-header">
     <%= header_logo %>
     <div class="download">
-      <%= link_to "Download on the App Store", appstore_url %>
+      <%= link_to "Download on the App Store", appstore_url,
+          :class => 'gaevent',
+          :'data-gaecategory' => 'outgoinglink',
+          :'data-gaeaction' => 'appstore',
+          :'data-gaelabel' => 'mobile-header'%>
     </div>
   </div>
 
@@ -23,8 +27,8 @@
     <%= yield %>
   </div>
 
-  <%# javascript_include_tag('application.mobile') %>
-  <%# javascript_tags %>
+  <%= javascript_include_tag('https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js') %>
+  <%= javascript_include_tag('application') %>
   <%= render :partial => 'layouts/google_analytics.html' %>
 </body>
 </html>

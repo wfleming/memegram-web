@@ -27,12 +27,17 @@
         </div>
         
         <%= link_to image_tag('home/appstore.png', alt: 'Available on the App Store'),
-                    appstore_url, :class => 'appstore' %>
+                    appstore_url, :class => 'appstore gaevent',
+                    :'data-gaecategory' => 'outgoinglink',
+                    :'data-gaeaction' => 'appstore',
+                    :'data-gaelabel' => 'home' %>
           
       </div>
     </div>
   </div>
 
+  <%= javascript_include_tag('https://ajax.googleapis.com/ajax/libs/jquery/1.7.1/jquery.min.js') %>
+  <%= javascript_include_tag('application') %>
   <%= render :partial => 'layouts/google_analytics.html' %>
 </body>
 </html>
