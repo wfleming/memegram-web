@@ -1,3 +1,5 @@
+#= require bgpos.js 
+
 $ ->  # on dom ready
   $('div.screenshot').bgcarousel({
     step_time: 2000
