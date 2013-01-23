@@ -11,7 +11,6 @@ gem 'aws-s3', :require => 'aws/s3'
 # using a branch of instagram gem updated for rails 3.1.
 # see https://github.com/Instagram/instagram-ruby-gem/pull/20 for tracking
 gem 'instagram', :git => 'git://github.com/kylefox/instagram-ruby-gem.git', :ref => '95dbe0af'
-gem 'airbrake'
 gem 'rails_admin', :git => 'git://github.com/sferik/rails_admin.git'
 gem 'devise'
 gem 'coffee-rails'
